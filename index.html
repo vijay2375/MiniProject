@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FluentBharat – AI Speaking Partner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ============ LOGIN PAGE ============ -->
+    <div id="loginPage">
+        <div class="login-container">
+            <div class="login-left">
+                <h1>Fluent<span>Bharat</span></h1>
+                <p>Your personal AI-powered English speaking partner. Practice, improve, and gain confidence in real conversations.</p>
+                
+                <div class="features-list">
+                    <li><i class="fas fa-check-circle"></i> Real-time pronunciation feedback</li>
+                    <li><i class="fas fa-check-circle"></i> Personalized conversation practice</li>
+                    <li><i class="fas fa-check-circle"></i> Vocabulary & grammar correction</li>
+                    <li><i class="fas fa-check-circle"></i> Progress tracking & analytics</li>
+                </div>
+            </div>
+            
+            <div class="login-right">
+                <h2>Welcome Back</h2>
+                <p>Sign in to continue your English learning journey</p>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" class="form-control" placeholder="you@example.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                        <a href="#" class="forgot-link">Forgot password?</a>
+                    </div>
+                    
+                    <button type="button" class="btn btn-primary btn-large" onclick="login()">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </button>
+                </form>
+                
+                <div class="divider">
+                    <span>Or continue with</span>
+                </div>
+                
+                <button class="btn google-login">
+                    <i class="fab fa-google"></i> Google
+                </button>
+                
+                <p class="signup-link">
+                    Don't have an account? <a href="#">Sign up now</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ SIDEBAR ============ -->
+    <div class="sidebar hidden" id="sidebar">
+        <div class="sidebar-header">
+            <h2>Fluent<span>Bharat</span></h2>
+        </div>
+        
+        <div class="user-info">
+            <div class="avatar" id="userAvatar">JS</div>
+            <div class="user-details">
+                <h4 id="userName">John Smith</h4>
+                <p>Pro Member</p>
+            </div>
+        </div>
+        
+        <div class="sidebar-nav">
+            <a class="nav-item active" onclick="showPage('dashboardPage')">
+                <i class="fas fa-chart-line"></i> <span>Dashboard</span>
+            </a>
+            <a class="nav-item" onclick="showPage('chatPage')">
+                <i class="fas fa-comments"></i> <span>Practice Chat</span>
+            </a>
+            <a class="nav-item" onclick="showPage('vocabularyPage')">
+                <i class="fas fa-book-open"></i> <span>Vocabulary</span>
+            </a>
+            <a class="nav-item" onclick="showPage('pronunciationPage')">
+                <i class="fas fa-microphone-alt"></i> <span>Pronunciation</span>
+            </a>
+            <a class="nav-item" onclick="showPage('subscriptionPage')">
+                <i class="fas fa-crown"></i> <span>Subscription</span>
+            </a>
+            <a class="nav-item" onclick="showPage('settingsPage')">
+                <i class="fas fa-cog"></i> <span>Settings</span>
+            </a>
+        </div>
+        
+        <div class="sidebar-footer">
+            <button class="btn logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i> <span>Logout</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ============ MAIN CONTENT AREA ============ -->
+    <div class="main-content hidden" id="mainContent">
+        <!-- Top Navigation -->
+        <div class="top-nav">
+            <div class="page-title">
+                <h1 id="pageTitle">Dashboard</h1>
+                <p id="pageSubtitle">Welcome back! Ready to practice today?</p>
+            </div>
+            
+            <div class="top-nav-actions">
+                <div class="notification">
+                    <i class="fas fa-bell"></i>
+                    <span class="notification-badge">3</span>
+                </div>
+                <div class="user-profile">
+                    <div class="avatar small">JS</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Content Wrapper -->
+        <div class="content-wrapper">
+            <!-- ============ DASHBOARD PAGE ============ -->
+            <div id="dashboardPage" class="page">
+                <div class="stats-cards">
+                    <div class="card stat-card">
+                        <div class="stat-icon blue">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>12</h3>
+                            <p>Day Streak</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card stat-card">
+                        <div class="stat-icon green">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>87%</h3>
+                            <p>Pronunciation Score</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card stat-card">
+                        <div class="stat-icon orange">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>48</h3>
+                            <p>Conversations</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card stat-card">
+                        <div class="stat-icon purple">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>156</h3>
+                            <p>Words Learned</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="dashboard-sections">
+                    <div class="card dashboard-card">
+                        <h3><i class="fas fa-bullseye"></i> Today's Goal</h3>
+                        <p>Complete 3 conversation sessions</p>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 66%"></div>
+                        </div>
+                        <p>2 of 3 completed</p>
+                        
+                        <button class="btn btn-primary" style="margin-top: 15px;" onclick="showPage('chatPage')">
+                            <i class="fas fa-play"></i> Start Practice
+                        </button>
+                    </div>
+                    
+                    <div class="card dashboard-card">
+                        <h3><i class="fas fa-history"></i> Recent Activity</h3>
+                        <ul>
+                            <li>
+                                <span>Job Interview Practice</span>
+                                <span class="text-success">92%</span>
+                            </li>
+                            <li>
+                                <span>Casual Conversation</span>
+                                <span class="text-success">85%</span>
+                            </li>
+                            <li>
+                                <span>Pronunciation Drill</span>
+                                <span class="text-success">88%</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card dashboard-card">
+                        <h3><i class="fas fa-chart-line"></i> Weekly Progress</h3>
+                        <p>Your fluency improved by <strong>12%</strong> this week</p>
+                        <div class="progress-chart">
+                            <div class="chart-bar"></div>
+                            <div class="chart-bar"></div>
+                            <div class="chart-bar"></div>
+                            <div class="chart-bar"></div>
+                            <div class="chart-bar"></div>
+                            <div class="chart-bar"></div>
+                            <div class="chart-bar"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ============ CHAT PAGE ============ -->
+            <div id="chatPage" class="page hidden">
+                <div class="chat-container">
+                    <div class="chat-sidebar">
+                        <div class="card conversation-starter">
+                            <h3>Conversation Starters</h3>
+                            <div class="starter-topics">
+                                <div class="topic-chip" onclick="startTopic('Tell me about your favorite hobby.')">Hobbies</div>
+                                <div class="topic-chip" onclick="startTopic('Describe your last vacation.')">Travel</div>
+                                <div class="topic-chip" onclick="startTopic('What is your favorite food and why?')">Food</div>
+                                <div class="topic-chip" onclick="startTopic('Tell me about your job or studies.')">Work/Study</div>
+                                <div class="topic-chip" onclick="startTopic('What are your plans for the weekend?')">Weekend Plans</div>
+                                <div class="topic-chip" onclick="startTopic('Describe your favorite movie or book.')">Movies/Books</div>
+                            </div>
+                        </div>
+                        
+                        <div class="card pronunciation-feedback">
+                            <h4><i class="fas fa-microphone-alt"></i> Pronunciation Score</h4>
+                            <div class="score-circle">8.7</div>
+                            <p>Your pronunciation is good! Focus on vowel sounds to improve further.</p>
+                        </div>
+                        
+                        <div class="card" style="margin-top: 20px;">
+                            <h4><i class="fas fa-lightbulb"></i> Tips</h4>
+                            <ul style="margin-top: 10px; padding-left: 20px;">
+                                <li>Speak slowly and clearly</li>
+                                <li>Focus on sentence structure</li>
+                                <li>Use new vocabulary you've learned</li>
+                                <li>Don't worry about mistakes</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="chat-main">
+                        <div class="chat-window">
+                            <div class="chat-header">
+                                <h3><i class="fas fa-robot"></i> FluentBharat AI</h3>
+                                <span>Online</span>
+                            </div>
+                            
+                            <div class="chat-messages" id="chatMessages">
+                                <div class="message message-bot">
+                                    Hello! I'm your AI English tutor. Ready to practice speaking? Choose a topic or just start talking!
+                                    <div class="message-time">Just now</div>
+                                </div>
+                            </div>
+                            
+                            <div class="chat-input-area">
+                                <input type="text" class="chat-input" id="chatInput" placeholder="Type your message or use voice..." onkeypress="handleKeyPress(event)">
+                                <button class="voice-btn" id="voiceBtn" onclick="toggleVoice()">
+                                    <i class="fas fa-microphone"></i>
+                                </button>
+                                <button class="btn btn-primary send-btn" onclick="sendMessage()">
+                                    <i class="fas fa-paper-plane"></i> Send
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ============ VOCABULARY PAGE ============ -->
+            <div id="vocabularyPage" class="page hidden">
+                <div class="vocabulary-container">
+                    <div class="vocabulary-header">
+                        <h2>Today's Words</h2>
+                        <p>Learn 5 new words every day</p>
+                    </div>
+                    
+                    <div class="word-cards" id="wordCards">
+                        <div class="card word-card" onclick="showWordDetail(0)">
+                            <div class="word-header">
+                                <h3>Eloquent</h3>
+                                <span class="word-level">Intermediate</span>
+                            </div>
+                            <p>Fluent or persuasive in speaking or writing</p>
+                            <div class="word-actions">
+                                <button class="btn btn-outline btn-sm" onclick="practiceWord('Eloquent', event)">
+                                    <i class="fas fa-volume-up"></i> Practice
+                                </button>
+                                <button class="btn btn-outline btn-sm" onclick="addToFlashcards('Eloquent', event)">
+                                    <i class="fas fa-plus"></i> Save
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="card word-card" onclick="showWordDetail(1)">
+                            <div class="word-header">
+                                <h3>Pragmatic</h3>
+                                <span class="word-level">Intermediate</span>
+                            </div>
+                            <p>Dealing with things sensibly and realistically</p>
+                            <div class="word-actions">
+                                <button class="btn btn-outline btn-sm" onclick="practiceWord('Pragmatic', event)">
+                                    <i class="fas fa-volume-up"></i> Practice
+                                </button>
+                                <button class="btn btn-outline btn-sm" onclick="addToFlashcards('Pragmatic', event)">
+                                    <i class="fas fa-plus"></i> Save
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="card word-card" onclick="showWordDetail(2)">
+                            <div class="word-header">
+                                <h3>Resilient</h3>
+                                <span class="word-level">Intermediate</span>
+                            </div>
+                            <p>Able to withstand or recover quickly from difficult conditions</p>
+                            <div class="word-actions">
+                                <button class="btn btn-outline btn-sm" onclick="practiceWord('Resilient', event)">
+                                    <i class="fas fa-volume-up"></i> Practice
+                                </button>
+                                <button class="btn btn-outline btn-sm" onclick="addToFlashcards('Resilient', event)">
+                                    <i class="fas fa-plus"></i> Save
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="card word-card" onclick="showWordDetail(3)">
+                            <div class="word-header">
+                                <h3>Ubiquitous</h3>
+                                <span class="word-level">Advanced</span>
+                            </div>
+                            <p>Present, appearing, or found everywhere</p>
+                            <div class="word-actions">
+                                <button class="btn btn-outline btn-sm" onclick="practiceWord('Ubiquitous', event)">
+                                    <i class="fas fa-volume-up"></i> Practice
+                                </button>
+                                <button class="btn btn-outline btn-sm" onclick="addToFlashcards('Ubiquitous', event)">
+                                    <i class="fas fa-plus"></i> Save
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="card word-card" onclick="showWordDetail(4)">
+                            <div class="word-header">
+                                <h3>Meticulous</h3>
+                                <span class="word-level">Intermediate</span>
+                            </div>
+                            <p>Showing great attention to detail; very careful and precise</p>
+                            <div class="word-actions">
+                                <button class="btn btn-outline btn-sm" onclick="practiceWord('Meticulous', event)">
+                                    <i class="fas fa-volume-up"></i> Practice
+                                </button>
+                                <button class="btn btn-outline btn-sm" onclick="addToFlashcards('Meticulous', event)">
+                                    <i class="fas fa-plus"></i> Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="practice-section">
+                        <h3><i class="fas fa-gamepad"></i> Practice Exercises</h3>
+                        <div class="practice-cards">
+                            <div class="card practice-card" onclick="startFlashcards()">
+                                <h4><i class="fas fa-layer-group"></i> Flashcards</h4>
+                                <p>Review saved words with flashcards</p>
+                                <span class="badge">42 cards</span>
+                            </div>
+                            
+                            <div class="card practice-card" onclick="startQuiz()">
+                                <h4><i class="fas fa-question-circle"></i> Quiz</h4>
+                                <p>Test your vocabulary knowledge</p>
+                                <span class="badge">10 questions</span>
+                            </div>
+                            
+                            <div class="card practice-card" onclick="startSentencePractice()">
+                                <h4><i class="fas fa-comment-alt"></i> Sentences</h4>
+                                <p>Practice using words in sentences</p>
+                                <span class="badge">New</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ============ PRONUNCIATION PAGE ============ -->
+            <div id="pronunciationPage" class="page hidden">
+                <div class="pronunciation-container">
+                    <div class="pronunciation-stats">
+                        <div class="card stat-card">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-microphone-alt"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>87%</h3>
+                                <p>Overall Score</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card stat-card">
+                            <div class="stat-icon green">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>24</h3>
+                                <p>Sessions Completed</p>
+                            </div>
+                        </div>
+                        
+                        <div class="card stat-card">
+                            <div class="stat-icon orange">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="stat-info">
+                                <h3>+12%</h3>
+                                <p>This Month</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="pronunciation-exercises">
+                        <h3><i class="fas fa-dumbbell"></i> Practice Exercises</h3>
+                        
+                        <div class="exercise-card card" onclick="startMinimalPairs()">
+                            <div class="exercise-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="exercise-content">
+                                <h4>Minimal Pairs</h4>
+                                <p>Practice similar sounding words like "ship" and "sheep"</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary">Start</button>
+                        </div>
+                        
+                        <div class="exercise-card card" onclick="startTongueTwisters()">
+                            <div class="exercise-icon">
+                                <i class="fas fa-language"></i>
+                            </div>
+                            <div class="exercise-content">
+                                <h4>Tongue Twisters</h4>
+                                <p>Improve articulation with fun tongue twisters</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary">Start</button>
+                        </div>
+                        
+                        <div class="exercise-card card" onclick="startSentenceStress()">
+                            <div class="exercise-icon">
+                                <i class="fas fa-volume-up"></i>
+                            </div>
+                            <div class="exercise-content">
+                                <h4>Sentence Stress</h4>
+                                <p>Learn where to place emphasis in sentences</p>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 45%"></div>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary">Start</button>
+                        </div>
+                    </div>
+                    
+                    <div class="pronunciation-history">
+                        <h3><i class="fas fa-history"></i> Recent Practice</h3>
+                        <div class="history-list">
+                            <div class="history-item">
+                                <div class="history-icon success">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="history-content">
+                                    <h4>Vowel Sounds</h4>
+                                    <p>Completed just now • Score: 92%</p>
+                                </div>
+                            </div>
+                            
+                            <div class="history-item">
+                                <div class="history-icon warning">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                </div>
+                                <div class="history-content">
+                                    <h4>Consonant Clusters</h4>
+                                    <p>2 hours ago • Score: 78%</p>
+                                </div>
+                            </div>
+                            
+                            <div class="history-item">
+                                <div class="history-icon success">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="history-content">
+                                    <h4>Intonation Practice</h4>
+                                    <p>Yesterday • Score: 85%</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ============ SUBSCRIPTION PAGE ============ -->
+            <div id="subscriptionPage" class="page hidden">
+                <div class="subscription-header">
+                    <h1>Choose Your Plan</h1>
+                    <p>Unlock advanced features and accelerate your English learning journey with a plan that fits your needs.</p>
+                </div>
+                
+                <div class="plans-container">
+                    <div class="plan-card">
+                        <h3>Free</h3>
+                        <p>Basic access to practice tools</p>
+                        <div class="plan-price">₹0 <span>/month</span></div>
+                        
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 5 daily conversations</li>
+                            <li><i class="fas fa-check"></i> Basic pronunciation feedback</li>
+                            <li><i class="fas fa-check"></i> Limited vocabulary builder</li>
+                            <li><i class="fas fa-check"></i> Weekly progress report</li>
+                        </ul>
+                        
+                        <button class="btn btn-outline" style="width: 100%;">Current Plan</button>
+                    </div>
+                    
+                    <div class="plan-card featured">
+                        <div class="plan-badge">MOST POPULAR</div>
+                        <h3>Pro</h3>
+                        <p>For serious learners</p>
+                        <div class="plan-price">₹199 <span>/month</span></div>
+                        
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Unlimited conversations</li>
+                            <li><i class="fas fa-check"></i> Advanced pronunciation analysis</li>
+                            <li><i class="fas fa-check"></i> Full vocabulary builder</li>
+                            <li><i class="fas fa-check"></i> Daily progress reports</li>
+                            <li><i class="fas fa-check"></i> Grammar correction</li>
+                        </ul>
+                        
+                        <button class="btn btn-primary" style="width: 100%;">Upgrade to Pro</button>
+                    </div>
+                    
+                    <div class="plan-card">
+                        <h3>Premium</h3>
+                        <p>Maximum learning potential</p>
+                        <div class="plan-price">₹499 <span>/month</span></div>
+                        
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Everything in Pro</li>
+                            <li><i class="fas fa-check"></i> Interview preparation mode</li>
+                            <li><i class="fas fa-check"></i> Personalized lesson plans</li>
+                            <li><i class="fas fa-check"></i> Priority support</li>
+                            <li><i class="fas fa-check"></i> Offline practice mode</li>
+                        </ul>
+                        
+                        <button class="btn btn-secondary" style="width: 100%;">Go Premium</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ============ SETTINGS PAGE ============ -->
+            <div id="settingsPage" class="page hidden">
+                <div class="settings-container">
+                    <div class="settings-section">
+                        <h3><i class="fas fa-user-cog"></i> Profile Settings</h3>
+                        
+                        <div class="settings-group">
+                            <div class="form-group">
+                                <label>Full Name</label>
+                                <input type="text" class="form-control" id="fullName" value="John Smith" placeholder="Enter your full name">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Email Address</label>
+                                <input type="email" class="form-control" id="userEmail" value="john@example.com" placeholder="Enter your email">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Native Language</label>
+                                <select class="form-control" id="nativeLanguage">
+                                    <option value="hindi" selected>Hindi</option>
+                                    <option value="tamil">Tamil</option>
+                                    <option value="telugu">Telugu</option>
+                                    <option value="bengali">Bengali</option>
+                                    <option value="marathi">Marathi</option>
+                                    <option value="gujarati">Gujarati</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary" onclick="saveProfile()">
+                            <i class="fas fa-save"></i> Save Changes
+                        </button>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3><i class="fas fa-bell"></i> Notifications</h3>
+                        
+                        <div class="settings-group">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Daily Reminders</h4>
+                                    <p>Get notified to practice daily</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="dailyReminders" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Progress Reports</h4>
+                                    <p>Weekly progress updates</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="progressReports" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>New Features</h4>
+                                    <p>Notifications about new features</p>
+                                </div>
+                                <label class="switch">
+                                    <input type="checkbox" id="featureUpdates" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-section">
+                        <h3><i class="fas fa-volume-up"></i> Speech Settings</h3>
+                        
+                        <div class="settings-group">
+                            <div class="form-group">
+                                <label>AI Voice Speed</label>
+                                <input type="range" id="voiceSpeed" min="0.5" max="1.5" step="0.1" value="0.9">
+                                <div class="range-labels">
+                                    <span>Slow</span>
+                                    <span>Normal</span>
+                                    <span>Fast</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>AI Voice Pitch</label>
+                                <input type="range" id="voicePitch" min="0.5" max="1.5" step="0.1" value="1.0">
+                                <div class="range-labels">
+                                    <span>Low</span>
+                                    <span>Normal</span>
+                                    <span>High</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Voice Gender</label>
+                                <select class="form-control" id="voiceGender">
+                                    <option value="female" selected>Female</option>
+                                    <option value="male">Male</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-secondary" onclick="testVoiceSettings()">
+                            <i class="fas fa-play"></i> Test Voice
+                        </button>
+                    </div>
+                    
+                    <div class="settings-section danger">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
+                        
+                        <div class="settings-group">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Delete Account</h4>
+                                    <p>Permanently delete your account and all data</p>
+                                </div>
+                                <button class="btn btn-danger" onclick="deleteAccount()">
+                                    <i class="fas fa-trash"></i> Delete Account
+                                </button>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Reset Progress</h4>
+                                    <p>Reset all your learning progress</p>
+                                </div>
+                                <button class="btn btn-outline" onclick="resetProgress()">
+                                    <i class="fas fa-redo"></i> Reset Progress
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
